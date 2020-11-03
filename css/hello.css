@@ -1,0 +1,208 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+
+.topbar{
+    display: flex;
+    width: auto;
+    height: 70px;
+    padding: 25px;
+    background-color: lightseagreen;
+}
+
+.topbar_image{
+    height: 60px ;
+    width: 60px;
+    position: relative;
+}
+.topbar_image-match{
+    margin-left: 50%;
+}
+.topbar_image-profile{
+    margin-left: 0%;
+}
+
+
+.logo{
+    height: 100px ;
+    width: 100px;
+    margin-left: 41%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.left-container{
+    display: block;
+    margin: 10px;
+    float: left;
+    width: 19%;
+    height: 90%;
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    border-radius: 10px;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+}
+
+.box-parametres{
+    color: rgb(235, 68, 90);
+    font-weight: bold;
+    display: block;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+}
+
+.center-container{
+	width: 40%;
+	height: 90%;
+    float: left;
+}
+
+.container {
+    display: flex;
+    margin-left: 10%;
+}
+
+.content {
+    width: 100%;
+    height: auto;
+    display: flex;
+	padding: 200px 0;
+	align-items: center;
+    flex-direction: column;
+}
+
+.container .card {
+    position: relative;
+    height: auto;
+}
+
+.content .card .user {
+	width: 580px;
+	height: 650px;
+	object-fit: cover;
+	border-radius: 10px;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+
+}
+
+.content .card .user .profile {
+	position: absolute;
+	bottom: 0px;
+    left: 20px;
+}
+
+.content .card .user .name {
+	color: #fff;
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-shadow: 1px 1px 5px #444;
+}
+
+.content .card .user .name span {
+	font-size: 26px;
+}
+
+.content .card .local {
+	display: flex;
+	align-items: center;
+    padding: 0 0 20px 0;
+}
+
+.content .card .local i {
+	margin: 5px 0;
+	color: #fff;
+}
+
+.content .card .local span {
+	color: #fff;
+	padding: 0 10px;
+    text-shadow: 1px 1px 5px #444;
+}
+
+.content .buttons {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.content .buttons .no i {
+	color: #fd2e79;
+	font-size: 33px;
+}
+
+.content .buttons .star i {
+	color: #2bb1ff;
+	font-size: 22px;
+}
+
+.content .buttons .heart i {
+	color: #11e298;
+	font-size: 32px;
+}
+
+.content .buttons .no,
+.content .buttons .star,
+.content .buttons .heart {
+	background-color:#fff;
+	width: 70px;
+	height: 70px;
+	box-shadow: 0 1px 10px rgba(0, 20, 20, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 70px;
+	margin: 4px;
+	transition: 0.2s transform;
+}
+
+.content .buttons .no:hover,
+.content .buttons .star:hover,
+.content .buttons .heart:hover {
+	transform: scale(1.1);
+}
+
+.content .buttons .star {
+	width: 60px;
+	height: 60px;
+}
+
+.right-container{
+    display: block;
+    position: flex;
+	width: 40%;
+	height: 90%;
+	float: left;
+}
+
+#map { 
+    width: 76%;   /* Dimensions of the map element */
+    height: 90%;
+    margin:5%;
+    display: block;
+    box-shadow: 0 1px 10px rgb(7, 7, 7);
+}
+
+.dot {
+    cursor: default;   /* Changes the look of the cursor when it hovers the element */
+    fill: #0082a3;   /* Color */
+    fill-opacity: 0.6;   /* Transparency, from 0 (invisible) to 1 (opaque) */
+    stroke: #004d60;   /* Border color */
+    stroke-width: 1;   /* Border width in pixels */
+}
+
+/* CSS code for the element that has the id points_container */
+
+#points_container {
+    position: absolute;
+    width: 100%;   /* Width of the element is 100% of the width of its parent */
+    height: 100%;   /* Height of the element is 100% of the width of its parent */
+}
