@@ -12,15 +12,15 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         />
-        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet'></link>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet'></link>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+		<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
     </head>
     <body>
         <header>
             <div class="topbar">
-                <div class="topbar_image topbar_image-profile">
-                    <img src="\pictures\dinosaur.png">
-                </div>
-    
+				<span style="font-size:50px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
                 <div class="logo">
                     <h1>Tindinosaurus</h1>
                 </div>
@@ -28,23 +28,32 @@
                 <div class="topbar_image topbar_image-match">
                     <img src="\pictures\log.png">
                 </div>
-            </div>
-        </header>
+			</div>
+			<!-- Sidebar -->
+			<div id="mySidenav" class="sidenav">
+				<div class="slidecontainer">
+					<h1>Distance (km) <span id="demo"></span></h1>
+					<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+				</div>
+				<a href="#">Diet</a>
+				<div id="myBtnContainer">
+					<button class="btn active" onclick="filterSelection('carnivorous')"> Carnivore</button>
+					<button class="btn" onclick="filterSelection('herbivorous')"> Herbivore</button>
+				</div>
+				<div class="container">
+					<div class="filterDiv carnivorous">megalosaurus</div>
+					<div class="filterDiv carnivorous">carnotaurus</div>
+					<div class="filterDiv carnivorous">tyrannosaurus</div>
+					<div class="filterDiv herbivorous">triceratops</div>
+					<div class="filterDiv herbivorous">brachiosaurus</div>
+					<div class="filterDiv herbivorous">brontosaurus</div>
+				  </div>
+				<a href="#">Services</a>
+				<a href="#">Clients</a>
+				<a href="#">Contact</a>
+			  </div>
+		</header>
         <main>
-            <section class="left-container">
-                <p>ceci est la zone des filtres</p>
-                <h1>Réglage de la découverte des profils</h1>
-                <div class="box-parametres">
-                    <p>Distance maximale</p>
-                    <div>INSERT LIGNE DU RAYON DE RECHERCHE</div>
-                </div>
-                
-                <div class="box-parametres">
-                    <p>tranche d'époque</p>
-                    <div>INSERT LIGNE DE L EPOQUE DE RECHERCHE</div>
-                </div>
-                
-            </section>
             <section class = "center-container">
                 <div class="container">
                     <div class="content">
@@ -78,7 +87,8 @@
                     </div>
             </section>
             <section class = "right-container">
-                <div id="map"></div>
+				<div id='map'></div>
+				<pre id='coordinates' class='ui-coordinates'></pre>
             </section>
         </main>
         <footer>
@@ -86,7 +96,6 @@
         </footer>
     </body>
 </html>
-
 
 
 <script src="https://d3js.org/d3.v3.min.js"></script>   <!-- d3.js import -->
@@ -112,6 +121,7 @@
 		position: "top-left"}   // The controls appear at the top left
 	));
 
+
 	// container is the overlay of the map. The overlay will contain everything we add to the map
 
 	const container = map.getCanvasContainer();
@@ -121,17 +131,18 @@
 	const svg = d3.select(container)
 		.append("svg")
 			.attr("id", "points_container");   // The id of the svg is points_container
+	
 
 	d3.json("fossils.json", function(data){   // The code in the function is executed only when the data is loaded. All code requiring that the data is fully loaded shoud come here
 
 		console.log(data);   // Always check if the data was correctly loaded!
-		
+
 		// From this point, the code is different from the Mapbox only example
 
 		// The points contained in data are drawn
 
+		
 		drawPoints(data);
-
 		// A function drawing the points was defined. It can be called again if a different dataset needs to be drawn
 
 		function drawPoints(points){
@@ -141,7 +152,6 @@
 			document.getElementById("points_container").innerHTML = "";
 
 			// dots is the selection holding the points
-
 			let dots = svg.selectAll(".dot")
 				.data(points);
 
@@ -152,7 +162,7 @@
 				.attr("r", 5)   // Radius is 5
 				.append("title")   // A title is added to the circles (when the mouse goes over a circle, some text will show)
 					.text(function(d){   // Text of the mouseover title
-						return d["id"];   // The text displayed for a circle is the name of museum it represents
+						return d["Name"];   // The text displayed for a circle is the name of museum it represents
 					});
 				
 			// This function renders the points on the map. Basically, it handles the projection of every point
@@ -165,26 +175,24 @@
 					.attr("cx", function(d){   // Setting the x coordinate of the circle center
 						
 						// 1) Use the Latitude and Longitude to get a point in the Mapbox format (this point has a latitude and longitude)
-						var v1 = new mapboxgl.LngLat( d.longitude, d.latitude)
+						//     ----> new mapboxgl.LngLat(d.Longitude, d.Latitude)
 						// 2) Compute the projection of this point. It has an x and y coordinate in pixels
-						console.log(v1)
-
-						map.project(LngLat.lng, LngLat.lat)
+						//     ----> map.project(...)
 						// 3) We are setting the x coordinate of the center of the circle -> get the x coordinate of the projection
-						map.project(LngLat.lng, LngLat.lat).x
+						//     ----> map.project(...).x
 
-						return map.project(v1).x;
+						return map.project(new mapboxgl.LngLat(d.longitude, d.latitude)).x;
 					})
 					.attr("cy", function(d){   // Setting the y coordinate of the circle center
 
 						// 1) Use the Latitude and Longitude to get a point in the Mapbox format (this point has a latitude and longitude)
-						var v2 = new mapboxgl.LngLat(5.906399, -1.0289)
+						//     ----> new mapboxgl.LngLat(d.Longitude, d.Latitude)
 						// 2) Compute the projection of this point. It has an x and y coordinate in pixels
-						map.project(v2)
+						//     ----> map.project(...)
 						// 3) We are setting the y coordinate of the center of the circle -> get the y coordinate of the projection
-						map.project(v2).y
+						//     ----> map.project(...).y
 
-						return map.project(new mapboxgl.LngLat(v1)).y;
+						return map.project(new mapboxgl.LngLat(d.longitude, d.latitude)).y;
 					});
 					
 			}
@@ -202,6 +210,75 @@
 
 			render();
 		}
+		
 	});
-
 </script>
+
+
+<!--Sidebar-->
+<script>function toggleNav() {
+    var element = document.getElementById("mySidenav");
+    if (element.style.width == "55%") {
+        element.style.width = "0px";
+    } else {
+        element.style.width = "55%";
+    }
+}
+</script>
+
+<!--slider search radius-->
+<script>
+	var slider = document.getElementById("myRange");
+	var output = document.getElementById("demo");
+	output.innerHTML = slider.value;
+	
+	slider.oninput = function() {
+	  output.innerHTML = this.value;
+	}
+	</script>
+
+
+<script>
+	filterSelection("all")
+	function filterSelection(c) {
+	  var x, i;
+	  x = document.getElementsByClassName("filterDiv");
+	  if (c == "all") c = "";
+	  for (i = 0; i < x.length; i++) {
+		w3RemoveClass(x[i], "show");
+		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+	  }
+	}
+	
+	function w3AddClass(element, name) {
+	  var i, arr1, arr2;
+	  arr1 = element.className.split(" ");
+	  arr2 = name.split(" ");
+	  for (i = 0; i < arr2.length; i++) {
+		if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+	  }
+	}
+	
+	function w3RemoveClass(element, name) {
+	  var i, arr1, arr2;
+	  arr1 = element.className.split(" ");
+	  arr2 = name.split(" ");
+	  for (i = 0; i < arr2.length; i++) {
+		while (arr1.indexOf(arr2[i]) > -1) {
+		  arr1.splice(arr1.indexOf(arr2[i]), 1);     
+		}
+	  }
+	  element.className = arr1.join(" ");
+	}
+	
+	// Add active class to the current button (highlight it)
+	var btnContainer = document.getElementById("myBtnContainer");
+	var btns = btnContainer.getElementsByClassName("btn");
+	for (var i = 0; i < btns.length; i++) {
+	  btns[i].addEventListener("click", function(){
+		var current = document.getElementsByClassName("active");
+		current[0].className = current[0].className.replace(" active", "");
+		this.className += " active";
+	  });
+	}
+	</script>

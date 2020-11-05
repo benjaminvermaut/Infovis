@@ -28,6 +28,47 @@ html, body {
     margin-left: 0%;
 }
 
+.sidenav {
+    height: 90%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 9.3%;
+    left: 0;
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+}
+  
+.sidenav a {
+    padding:  32px;
+    text-decoration: none;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    display: block;
+    transition: 0.3s;
+    font-size: 60px;
+}
+  
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+  
+.sidenav .closebtn {
+    position: absolute;
+    top: 1.5%;
+    left: 0px;
+    font-size: 50px;
+    margin-left: 0px;
+    color: #111;
+}
+  
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 
 .logo{
     height: 100px ;
@@ -63,6 +104,7 @@ html, body {
 	width: 40%;
 	height: 90%;
     float: left;
+    margin-left: 15%;
 }
 
 .container {
@@ -89,7 +131,7 @@ html, body {
 	height: 650px;
 	object-fit: cover;
 	border-radius: 10px;
-    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+    box-shadow: 0 1px 10px 0 rgba(128, 250, 250, 0.5);
 
 }
 
@@ -205,4 +247,82 @@ html, body {
     position: absolute;
     width: 100%;   /* Width of the element is 100% of the width of its parent */
     height: 100%;   /* Height of the element is 100% of the width of its parent */
+}
+
+ 
+.slidecontainer {
+    width: 100%;
+}
+  
+.slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 30px;
+    background: #000000;
+    box-shadow: 0 1px 10px rgba(0, 20, 20, 0.5);
+	border-radius: 70px;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 70px;
+    background: #ffffff;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+
+.filterDiv {
+    float: left;
+    background-color: #2196F3;
+    color: #ffffff;
+    width: 100px;
+    line-height: 100px;
+    text-align: center;
+    margin: 2px;
+    display: none;
+}
+  
+.show {
+    display: block;
+}
+  
+.container {
+    margin-top: 20px;
+    overflow: hidden;
+}
+  
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+  
+.btn:hover {
+    background-color: #ddd;
+}
+  
+.btn.active {
+    background-color: #666;
+    color: white;
 }
