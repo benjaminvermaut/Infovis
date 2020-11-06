@@ -1,7 +1,7 @@
 <html>
     <head>
-        <title>Tinder</title>
-        <link href="\css\hello.css" rel="stylesheet">
+        <title>Matchs</title>
+        <link href="\css\matchs.css" rel="stylesheet">
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -28,72 +28,77 @@
                 <div class="topbar_image topbar_image-match">
                     <img src="\pictures\log.png">
                 </div>
-			</div>
-			<!-- Sidebar -->
-			<div id="mySidenav" class="sidenav">
-				<div class="slidecontainer">
-					<h1>Distance (km) <span id="demo"></span></h1>
-					<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-				</div>
-				<a href="#">Diet</a>
-				<div id="myBtnContainer">
-					<button class="btn active" onclick="filterSelection('carnivorous')"> Carnivore</button>
-					<button class="btn" onclick="filterSelection('herbivorous')"> Herbivore</button>
-				</div>
-				<div class="container">
-					<div class="filterDiv carnivorous">megalosaurus</div>
-					<div class="filterDiv carnivorous">carnotaurus</div>
-					<div class="filterDiv carnivorous">tyrannosaurus</div>
-					<div class="filterDiv herbivorous">triceratops</div>
-					<div class="filterDiv herbivorous">brachiosaurus</div>
-					<div class="filterDiv herbivorous">brontosaurus</div>
-				  </div>
-				<a href="#">Services</a>
-				<a href="#">Clients</a>
-				<a href="#">Contact</a>
-			  </div>
-		</header>
+            </div>
+        </header>
         <main>
-            <section class = "center-container">
-                <div class="container">
-                    <div class="content">
-                        <div class="card">
-                            <div class="user">
-                                <img
-                                    class="user"
-                                    src="https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
-                                    alt=""
-                                />
-                                <div class="profile">
-                                    <div class="name">Rafaela <span>20</span></div>
-                                    <div class="local">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>à 20 km</span>
+            <section >
+                <ul class="listcontainer">
+                    <li>
+                        <div class="container">
+                            <div class="content">
+                                <div class="card">
+                                    <div class="user">
+                                        <img
+                                            class="user"
+                                            src="https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
+                                            alt=""
+                                        />
+                                        <div class="profile">
+                                            <div class="name">Rafaela <span>20</span></div>
+                                            <div class="local">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>à 20 km</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="content">
+                                <div class="card">
+                                    <div class="user">
+                                        <img
+                                            class="user"
+                                            src="https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
+                                            alt=""
+                                        />
+                                        <div class="profile">
+                                            <div class="name">Rafaela <span>20</span></div>
+                                            <div class="local">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>à 20 km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="card">
+                                    <div class="user">
+                                        <img
+                                            class="user"
+                                            src="https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
+                                            alt=""
+                                        />
+                                        <div class="profile">
+                                            <div class="name">Rafaela <span>20</span></div>
+                                            <div class="local">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>à 20 km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>             
                         </div>
-                        <div class="buttons">
-                            <div class="no">
-                                <i class="fas fa-times"></i>
-                            </div>
-                            <div class="star">
-                                <i class="fas fa-star fa"></i>
-                            </div>
-                            <div class="heart">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>
+                    </li>
+                </ul>
             </section>
-            <section class = "right-container">
-				<div id='map'></div>
-				<pre id='coordinates' class='ui-coordinates'></pre>
+            <section class="mapcontainer">
+                <div id='map'></div>
+                <pre id='coordinates' class='ui-coordinates'></pre>
             </section>
-        </main>
-        <footer>
 
-        </footer>
+        </main>
     </body>
 </html>
 
@@ -212,73 +217,5 @@
 		}
 		
 	});
+
 </script>
-
-
-<!--Sidebar-->
-<script>function toggleNav() {
-    var element = document.getElementById("mySidenav");
-    if (element.style.width == "55%") {
-        element.style.width = "0px";
-    } else {
-        element.style.width = "55%";
-    }
-}
-</script>
-
-<!--slider search radius-->
-<script>
-	var slider = document.getElementById("myRange");
-	var output = document.getElementById("demo");
-	output.innerHTML = slider.value;
-	
-	slider.oninput = function() {
-	  output.innerHTML = this.value;
-	}
-	</script>
-
-
-<script>
-	filterSelection("all")
-	function filterSelection(c) {
-	  var x, i;
-	  x = document.getElementsByClassName("filterDiv");
-	  if (c == "all") c = "";
-	  for (i = 0; i < x.length; i++) {
-		w3RemoveClass(x[i], "show");
-		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-	  }
-	}
-	
-	function w3AddClass(element, name) {
-	  var i, arr1, arr2;
-	  arr1 = element.className.split(" ");
-	  arr2 = name.split(" ");
-	  for (i = 0; i < arr2.length; i++) {
-		if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-	  }
-	}
-	
-	function w3RemoveClass(element, name) {
-	  var i, arr1, arr2;
-	  arr1 = element.className.split(" ");
-	  arr2 = name.split(" ");
-	  for (i = 0; i < arr2.length; i++) {
-		while (arr1.indexOf(arr2[i]) > -1) {
-		  arr1.splice(arr1.indexOf(arr2[i]), 1);     
-		}
-	  }
-	  element.className = arr1.join(" ");
-	}
-	
-	// Add active class to the current button (highlight it)
-	var btnContainer = document.getElementById("myBtnContainer");
-	var btns = btnContainer.getElementsByClassName("btn");
-	for (var i = 0; i < btns.length; i++) {
-	  btns[i].addEventListener("click", function(){
-		var current = document.getElementsByClassName("active");
-		current[0].className = current[0].className.replace(" active", "");
-		this.className += " active";
-	  });
-	}
-	</script>
