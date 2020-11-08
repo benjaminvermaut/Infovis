@@ -7,24 +7,29 @@ html, body {
 	height: 100%;
 }
 
+
 .topbar{
     display: flex;
     width: auto;
-    height: 70px;
+    height: 60px;
     padding: 25px;
     background: linear-gradient(262deg, #ff7854, #fa468e);
 }
 
-.topbar_image{
-    height: 60px ;
-    width: 60px;
+.topbar_header{
+    text-decoration: none;
+    color: black;
+    height: 100px ;
+    width: 100px;
+    margin-left: 41%;
+    margin-top: 10px;
     position: relative;
 }
-.topbar_image-match{
-    margin-left: 50%;
-}
-.topbar_image-profile{
-    margin-left: 0%;
+
+.topbar_image{
+    size: 1em;
+    position: relative;
+    margin-left: 39%;
 }
 
 .topbar_btn{
@@ -32,13 +37,82 @@ html, body {
     cursor:pointer;
 }
 
-.logo{
-    height: 100px ;
-    width: 100px;
-    margin-left: 41%;
-    margin-top: 10px;
-    position: relative;
+.sidenav {
+    height: 90%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 9.3%;
+    left: 0;
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
 }
+  
+.sidenav a {
+    padding:  32px;
+    text-decoration: none;
+    font-size: 50px;
+    color: rgb(255, 250, 250);
+    display: block;
+    transition: 0.3s;
+    font-size: 60px;
+}
+  
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+  
+.sidenav .closebtn {
+    position: absolute;
+    top: 1.5%;
+    left: 0px;
+    font-size: 50px;
+    margin-left: 0px;
+    border-radius: 70px;
+    color: rgb(255, 255, 255);
+}
+
+.slidecontainer {
+    width: 100%;
+}
+  
+.slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 30px;
+    background: #ffffff;
+    box-shadow: 0 1px 10px rgb(139, 138, 138);
+	border-radius: 70px;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 70px;
+    background: #000000;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #000000;
+    cursor: pointer;
+}
+
 
 #map { 
     width: 76%;   /* Dimensions of the map element */
@@ -68,63 +142,76 @@ html, body {
 .listcontainer{
     display: block;
     padding: 0px;
-    background-color: #e6ff05;
-    height: 44%; 
+    height: 39%;
+    overflow:auto 
 }
 
 .mapcontainer{
     display: block;
     margin: 10px;
     padding: 0px;
-    height: 45%;
+    height: 40%;
 }
 
-.container .card {
-    position: relative;
-    height: auto;
-    padding:15px;
+.news figcaption,
+.news .article figcaption {
+  position: absolute;
 }
 
-.content .card .user {
-	width: 220px;
-	height: 200px;
-	object-fit: cover;
-	border-radius: 10px;
-    box-shadow: 0 1px 10px 0 rgba(128, 250, 250, 0.5);
-    background-color: #0082a3;
+.news .article {
+  position: relative;
 }
 
-.content .card .user .profile {
-	position: absolute;
-	bottom: 0px;
-    left: 20px;
+.news {
+    display: flex;
+}
+  
+.news {
+    flex-flow: row wrap;
 }
 
-.content .card .user .name {
-	color: #fff;
-	font-size: 32px;
-	font-weight: 700;
-	letter-spacing: 0.5px;
-	text-shadow: 1px 1px 5px #444;
+.news .article {
+  overflow: hidden;
+  width: 250px;
+  height: 235px;
+  margin: 30px;
+  border-radius: 30px;
 }
-
-.content .card .user .name span {
-	font-size: 26px;
+.news .article img {
+  width: 100%;
+  min-height: 100%;
+  transition: 0.2s;
 }
-
-.content .card .local {
-	display: flex;
-	align-items: center;
-    padding: 0 0 20px 0;
+.news .article figcaption {
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(51,51,51,0.3);
+  color: #fff;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 40px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: rgba(6,18,53,0.6);
+  opacity: 0;
+  transform: scale(1.15);
+  transition: 0.2s;
 }
-
-.content .card .local i {
-	margin: 5px 0;
-	color: #fff;
+.news .article figcaption h3 {
+  color: #3792e3;
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: bold;
 }
-
-.content .card .local span {
-	color: #fff;
-	padding: 0 10px;
-    text-shadow: 1px 1px 5px #444;
+.news .article:hover img,
+.news .article:focus img,
+.news .article:active img {
+  filter: blur(3px);
+  transform: scale(0.97);
+}
+.news .article:hover figcaption,
+.news .article:focus figcaption,
+.news .article:active figcaption {
+  opacity: 1;
+  transform: none;
 }
