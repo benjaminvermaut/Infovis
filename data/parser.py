@@ -11,7 +11,6 @@ def mph_to_km(mph):
     kmh = mph * 1.61
     return kmh
 
-
 def get_infos_fossil(fossil):
     """
         Browse dinosaurs.csv and return the information corresponding to the fossil
