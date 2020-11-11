@@ -127,10 +127,15 @@
 
 	// An svg is appended to the container. It will contain the visual elements
 
+	
 	const svg = d3.select(container)
 		.append("svg")
 			.attr("id", "points_container");   // The id of the svg is points_container
 	
+	//Selection des matchs
+	var matchs = [{'id':"139292",'name': "Tyrannosaurus rex", 'latitude': 51.906399, 'longitude': -113.0289, 'zone':"land", 'diet':"carnivorous", 'size' : 12.9, 'weight' : 4882.3, 'speed' :27.0, 'lived' : "maastrichtian"},
+	{'id':"139293", 'name': "Tyrannosaurus rex", 'latitude': 45.906399, 'longitude': -103.0289, 'zone':"land", 'diet':"carnivorous", 'size' : 12.9, 'weight' : 4882.3, 'speed' :27.0, 'lived' : "maastrichtian"}];
+
 
 	d3.json("/data/fossils.json", function(data){   // The code in the function is executed only when the data is loaded. All code requiring that the data is fully loaded shoud come here
 
@@ -141,7 +146,7 @@
 		// The points contained in data are drawn
 
 		
-		drawPoints(data);
+		drawPoints(matchs);
 		// A function drawing the points was defined. It can be called again if a different dataset needs to be drawn
 
 		function drawPoints(points){
@@ -179,7 +184,6 @@
 						//     ----> map.project(...)
 						// 3) We are setting the x coordinate of the center of the circle -> get the x coordinate of the projection
 						//     ----> map.project(...).x
-
 						return map.project(new mapboxgl.LngLat(d.longitude, d.latitude)).x;
 					})
 					.attr("cy", function(d){   // Setting the y coordinate of the circle center
