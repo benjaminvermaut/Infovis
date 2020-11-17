@@ -172,10 +172,11 @@ html, body {
 
 .news .article {
   overflow: hidden;
-  width: 250px;
-  height: 235px;
+  width: 350px;
+  height: 335px;
   margin: 30px;
   border-radius: 30px;
+  border: 3px solid #fa468e ;
 }
 .news .article img {
   width: 100%;
