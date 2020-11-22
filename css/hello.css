@@ -86,128 +86,149 @@ html, body {
     box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
 }
 
-.center-container{
+/* center container with dinosaur card profile */
+.center_container{
 	width: 40%;
 	height: 80%;
     float: left;
     margin-left: 15%;
+    padding: 35px;
 }
 
-.container {
-    display: flex;
-    margin-left: 0%;
+.modalcard {
+    margin-left: 150px;
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 210px 210px 80px;
+    grid-template-areas: "image" "text" "stats";
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;
+    text-align: center;
+    width: 400px;
+    height: 520px;
+}
+  
+.modalcard-image {
+    margin :10px;
+    grid-area: image;
+    width: 390px;
+    height: 250px;
+}
+.modalcard-text {
+    grid-area: text;
+    width: 250px;
+    padding: 10px;
+    margin: 70px;
+}
+.modalcard-stats {
+    grid-area: stats; 
+    width: 400px;
+    margin-top:30px;
+    height: 70px;
+}
+  
+.modalcard-image {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
 }
 
-.content {
-    width: 100%;
-    height: 100%;
+.modalcard-text .date {
+    color: rgb(0, 0, 0);
+    font-size:13px;
+}
+.modalcard-text strong {
+    color: rgb(0, 0, 0);
+    font-size:17px;
+    font-weight: bold;
+}
+
+.modalcard-text span {
+    color: rgb(12, 10, 10);
+    font-size:16px;
+    font-weight: 400;
+}
+.modalcard-text hr {
+    height: 1px;
+    border: 1px solid black;
+    border-radius: 70px;
+}
+
+.modalcard-text h2 {
+    margin-top:0px;
+    font-size:28px;
+}
+  
+.modalcard-stats {
+    grid-area: stats; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: rgb(255, 7, 110);
+}
+  
+.modalcard-stats .stat {
     display: flex;
-	padding-top: 10%;
-	align-items: center;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    color: white;
+    padding:10px;
+}
+  
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 230px;
+}
+  
+.buttons .no i {
+    color: #fd2e79;
+    font-size: 33px;
+}
+  
+.buttons .star i {
+    color: #2bb1ff;
+    font-size: 22px;
+}
+  
+.buttons .heart i {
+    color: #11e298;
+    font-size: 32px;
+}
+  
+.buttons .no,
+.buttons .star,
+.buttons .heart {
+      background-color:#fff;
+      width: 70px;
+      height: 70px;
+      box-shadow: 0 1px 10px rgba(0, 20, 20, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 70px;
+      margin: 5px;
+    transition: 0.2s transform;
+}
+  
+.buttons .no:hover,
+.buttons .star:hover,
+.buttons .heart:hover {
+      transform: scale(1.1);
+}
+  
+.buttons .star {
+      width: 60px;
+      height: 60px;
 }
 
-.container .card {
-    position: relative;
-    height: auto;
-    padding-top: 0px;
-}
-
-.content .card .user {
-	width: 400px;
-	height: 450px;
-	object-fit: cover;
-	border-radius: 10px;
-    box-shadow: 0 1px 10px 0 rgba(128, 250, 250, 0.5);
-}
-
-.content .card .user:hover{
-    opacity: 0.9;
-    cursor: pointer;
-}
-
-.content .card .user .profile {
-	position: absolute;
-	bottom: 0px;
-    left: 20px;
-}
-
-.content .card .user .name {
-	color: #fff;
-	font-size: 32px;
-	font-weight: 700;
-	letter-spacing: 0.5px;
-	text-shadow: 1px 1px 5px #444;
-}
-
-.content .card .user .name span {
-	font-size: 26px;
-}
-
-.content .card .local {
-	display: flex;
-	align-items: center;
-    padding: 0 0 20px 0;
-}
-
-.content .card .local i {
-	margin: 5px 0;
-	color: #fff;
-}
-
-.content .card .local span {
-	color: #fff;
-	padding: 0 10px;
-    text-shadow: 1px 1px 5px #444;
-}
-
-.content .buttons {
-	margin-top: 10px;
-	display: flex;
-	align-items: center;
-}
-
-.content .buttons .no i {
-	color: #fd2e79;
-	font-size: 33px;
-}
-
-.content .buttons .star i {
-	color: #2bb1ff;
-	font-size: 22px;
-}
-
-.content .buttons .heart i {
-	color: #11e298;
-	font-size: 32px;
-}
-
-.content .buttons .no,
-.content .buttons .star,
-.content .buttons .heart {
-	background-color:#fff;
-	width: 70px;
-	height: 70px;
-	box-shadow: 0 1px 10px rgba(0, 20, 20, 0.5);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 70px;
-	margin: 4px;
-	transition: 0.2s transform;
-}
-
-.content .buttons .no:hover,
-.content .buttons .star:hover,
-.content .buttons .heart:hover {
-	transform: scale(1.1);
-}
-
-.content .buttons .star {
-	width: 60px;
-	height: 60px;
-}
-
+  /*Rigth container with map*/
 .right-container{
     display: block;
     position: flex;
@@ -240,7 +261,8 @@ html, body {
     height: 100%;   /* Height of the element is 100% of the width of its parent */
 }
 
- 
+/*Slidebar*/
+
 .slidecontainer {
     width: 100%;
 }
@@ -298,237 +320,4 @@ html, body {
 .container {
     margin-top: 20px;
     overflow: hidden;
-}
-  
-  /* Style the buttons */
-.btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-  
-.btn:hover {
-    background-color: #ddd;
-}
-  
-.btn.active {
-    background-color: #666;
-    color: white;
-}
-
-
-.container .card {
-    position: relative;
-    border-radius: 10px;
-}
-
-.container .card .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 0.7s;
-    z-index: 1;
-}
-
-.container .card .icon .fa {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 80px;
-    transition: 0.7s;
-    color: #fff;
-}
-
-.container .card .face {
-    width: 300px;
-    height: 200px;
-    transition: 0.5s;
-}
-
-.container .card .face.face1 {
-    position: relative;
-    background: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    transform: translateY(100px);
-}
-
-.container .card:hover .face.face1{
-    background: #ff0057;
-    transform: translateY(0px);
-}
-
-.container .card .face.face1 .content {
-    opacity: 1;
-    transition: 0.5s;
-}
-
-.container .card:hover .face.face1 .content {
-    opacity: 1;
-}
-
-.container .card .face.face1 .content i{
-    max-width: 100px;
-}
-
-.container .card .face.face2 {
-    position: relative;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    transform: translateY(-100px);
-}
-
-.container .card:hover .face.face2{
-    transform: translateY(0);
-}
-
-.container .card .face.face2 .content p {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: #414141;
-}
-
-.container .card .face.face2 .content h3 {
-    margin: 0 0 10px 0;
-    padding: 0;
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    color: #414141;
-} 
-
-.container a {
-    text-decoration: none;
-    color: #414141;
-}
-
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-  
-  /* Modal Content */
-.modal-content {
-    background-color: #fdf5f5;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    border-radius: 50px;
-}
-  
-  /* The Close Button */
-.close {
-    color: #e93bc3;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-  
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.image-modal{
-    border-radius: 60px;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: inline-block;
-}
-
-.image-container-modal{
-    margin: 10px;
-    padding: 10px;
-    width: 30%;
-    height: 50%;
-    position: relative;
-    top: 0px;
-}
-
-.details-container-modal{
-    margin: 10px;
-    padding: 10px;
-    width: 30%;
-    height: 50%;
-    position: relative;
-    top: 0px;
-}
-
-/** Speedometer**/
-.unselectable {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* css formats for the gauge */
-.gauge .domain {
-    stroke-width: 2px;
-    stroke: #fff;
-}
-
-.gauge .tick line {
-    stroke: #fff;
-    stroke-width: 2px;
-}
-
-.gauge line {
-    stroke: #fff;
-}
-.gauge .arc, .gauge .cursor {
-    opacity: 0;
-}
-
-.gauge .major {
-    fill: #fff;
-    font-size: 15px;
-    font-family: 'Play', verdana, sans-serif;
-    font-weight: normal;
-}
-
-.gauge .indicator {
-    stroke: #EE3311;
-    fill: #000;
-    stroke-width: 4px;
-}
-
-/* css formats for the segment display */
-.segdisplay .on {
-    fill: #00FFFF;
-
-}
-
-.segdisplay .off {
-    fill: #00FFFF;
-    opacity: 0.15;
 }
