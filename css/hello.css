@@ -37,11 +37,11 @@ html, body {
 }
 
 .sidenav {
-    height: 90%;
+    height: 80%;
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 9.3%;
+    top: 13.5%;
     left: 0;
     background: linear-gradient(262deg, #ff7854, #fd267d);
     overflow-x: hidden;
@@ -51,17 +51,25 @@ html, body {
 }
   
 .sidenav a {
-    padding:  32px;
     text-decoration: none;
-    font-size: 50px;
-    color: rgb(255, 250, 250);
+    font-size: 40px;
+    color: rgb(49, 48, 48);
     display: block;
     transition: 0.3s;
-    font-size: 60px;
+    background-color: rgb(241, 239, 239);
+    width: 500px;
+    margin-left:25%;
+    height: 150px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
 }
-  
-.sidenav a:hover{
-    color: #f1f1f1;
+
+.sidenav a hr{
+    width: 80%;
+    margin-left: 10%;
+    border: 1px solid black;
 }
   
 .sidenav .closebtn {
@@ -73,7 +81,25 @@ html, body {
     border-radius: 70px;
     color: rgb(255, 255, 255);
 }
-  
+
+.btn{
+    margin-top: 20px;
+    height: 60px;
+    width: 100px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: large;
+}
+
+.btn:hover{
+    cursor: pointer;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+}
+
+.btn:focus{
+    background-color: rgb(241, 62, 62);
+}
 
 .left-container{
     display: block;
@@ -261,11 +287,15 @@ html, body {
     height: 100%;   /* Height of the element is 100% of the width of its parent */
 }
 
-/*Slidebar*/
+/*Slidebar for km*/
 
 .slidecontainer {
     width: 100%;
+    margin-top: 40px;
 }
+
+
+
   
 .slider {
     -webkit-appearance: none;
@@ -320,4 +350,62 @@ html, body {
 .container {
     margin-top: 20px;
     overflow: hidden;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+  /* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Could be more or less, depending on screen size */
+}
+  
+  /* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.btnGTS{
+    margin-top: 20px;
+    height: 60px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    font-size: large;
+}
+
+.btnGTS:hover{
+    cursor: pointer;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+}
+
+.btnGTS:focus{
+    background-color: rgb(241, 62, 62);
 }

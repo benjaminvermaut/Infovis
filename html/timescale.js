@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="Content-Language" content="en" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
-    <title>Geologic Time</title>
-
-    <link rel="stylesheet" href="test.css" />
-
-  </head>
-  <body>
-    <div id="geoTime"></div>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript">
-
-    // Start
-    timescale.init("geoTime");
-
-    </script>
-  </body>
-</html>
-
-
-<script>
-  // Via http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+// Via http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
 // Necessary for highlighting time intervals properly
 d3.selection.prototype.moveToFront = function() {
   return this.each(function(){
@@ -41,7 +16,7 @@ var timescale = (function() {
 
     "init": function(div) {
       var w = 960,
-          h = 130,
+          h = 330,
           x = d3.scale.linear().range([0, w - 5]),
           y = d3.scale.linear().range([0, h]),
           newX = 0.01;
@@ -81,7 +56,7 @@ var timescale = (function() {
         .attr("transform", "translate(0,125)");
 
       // Load the time scale data 
-      d3.json("/data/intervals.json", function(error, result) {
+      d3.json("intervals.json", function(error, result) {
 
         for(var i=0; i < result.records.length; i++) {
           var r = result.records[i];
@@ -456,4 +431,3 @@ var timescale = (function() {
     "currentInterval": currentInterval
   }
 })();
-</script>

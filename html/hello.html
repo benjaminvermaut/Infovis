@@ -20,9 +20,13 @@
 		<script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
 		<script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
 		<script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
+
+		<link rel="stylesheet" href="timescale.css" />
+		<script></script>
     </head>
     <body>
         <header>
+			<!--Topbar-->
             <div class="topbar">
 				<span class="topbar_btn" onclick="toggleNav()">&#9776;</span>
                 <a class="topbar_header" href="\html\hello.html">
@@ -34,29 +38,60 @@
 			</div>
 			<!-- Sidebar -->
 			<div id="mySidenav" class="sidenav">
+				
 				<div class="slidecontainer">
-					<h1>Distance (km) <span id="demo"></span></h1>
-					<input type="range" min="1" max="1000" value="500" class="slider" id="myRange">
+					<h2><img src="/pictures/espace-reserve.png" alt="">Distance max (km) <span id="distance"></span></h2>
+					<input type="range" min="1" max="1000" value="500" class="slider" id="myRange_distance">
 				</div>
-				<a href="#">Diet</a>
-				<div id="myBtnContainer">
-					<button class="btn active" onclick="filterSelection('carnivorous')"> Carnivore</button>
-					<button class="btn" onclick="filterSelection('herbivorous')"> Herbivore</button>
+
+				<a><p>Diet</p>
+					<hr>
+					<div id="myBtnContainer" class = "btn_diet">
+						<button class="btn active" onclick="filterSelection('carnivorous')"><img src="/pictures/viande (2).png"> Carnivore</button>
+						<button class="btn" onclick="filterSelection('herbivorous')"><img src="/pictures/brocoli.png" alt=""> Herbivore</button>
+						<button class="btn" onclick="filterSelection('All')"> No matters</button>
+					</div>
+				</a>
+				
+				<div class="slidecontainer">
+					<h2> <img src="/pictures/la-vitesse.png" alt=""> Vitesse max (km/h) <span id="vitesse"></span></h2>
+					<input type="range" min="1" max="1000" value="500" class="slider" id="myRange_vitesse">
 				</div>
-				<div class="container">
-					<div class="filterDiv carnivorous">megalosaurus</div>
-					<div class="filterDiv carnivorous">carnotaurus</div>
-					<div class="filterDiv carnivorous">tyrannosaurus</div>
-					<div class="filterDiv herbivorous">triceratops</div>
-					<div class="filterDiv herbivorous">brachiosaurus</div>
-					<div class="filterDiv herbivorous">brontosaurus</div>
-				  </div>
-				<a href="#">Vitesse</a>
-				<a href="#">Periode</a>
-				<a href="#">Espece</a>
-			  </div>
+
+				<a>Espece
+					<p>Reste encore à determiner comment faire</p>
+				</a>
+
+				<h1>Sélectionner la période : </h1>
+				<!-- Trigger/Open The Modal -->
+				<button id="myBtn" class="btnGTS">Geologic Time Scale</button>
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<div id="geoTime"></div>
+						<script src="http://d3js.org/d3.v3.min.js"></script>
+						<script src="timescale.js"></script>
+						<script type="text/javascript">
+
+						// Start
+						timescale.init("geoTime");
+
+						</script>
+						<h3>Période sélectionnée : </h3>
+						<h3>Nombre de dinosaures dans la période sélectionnée : </h3>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
+			</div>
 		</header>
         <main>
+			<!--profile description + buttons like/superlike/no-->
             <section class = "center_container">
                     <div class="modalcard">
 						<img class="modalcard-image" src="/pictures/dinos/Ankylosaurus/Ankylosaurus 2.png" alt="">
@@ -66,9 +101,9 @@
 						  <h2>Tyrannosaurus rex</h2>
 						  <hr>
 						  <br>
-						  <p><strong>Zone :</strong> <span>land</span></p>
-						  <p><strong>Diet :</strong><span>carnivorous</span></p>
-						  <p><strong>Lived :</strong><span>maastrichtian</span></p>
+						  <p><strong>Zone : </strong> <span>land</span></p>
+						  <p><strong>Diet : </strong><span>carnivorous</span></p>
+						  <p><strong>Lived : </strong><span>campanian - maastrichtian</span></p>
 						</div>
 						<div class="modalcard-stats">
 						  <div class="stat">
@@ -97,7 +132,9 @@
 							<i class="fas fa-heart"></i>
 						</div>
 					</div>
-            </section>
+			</section>
+
+			<!--Container map-->
             <section class = "right-container">
 				<div id='map'></div>
             </section>
@@ -242,15 +279,25 @@
 
 <!--slider search radius-->
 <script>
-	var slider = document.getElementById("myRange");
-	var output = document.getElementById("demo");
-	output.innerHTML = slider.value;
+	var slider = document.getElementById("myRange_distance");
+	var output_distance = document.getElementById("distance");
+	output_distance.innerHTML = slider.value;
 	
 	slider.oninput = function() {
-	  output.innerHTML = this.value;
+		output_distance.innerHTML = this.value;
 	}
-	</script>
+</script>
 
+<!--slider speed -->
+<script>
+	var slider = document.getElementById("myRange_vitesse");
+	var output_vitesse = document.getElementById("vitesse");
+	output_vitesse.innerHTML = slider.value;
+	
+	slider.oninput = function() {
+		output_vitesse.innerHTML = this.value;
+	}
+</script>
 
 <script>
 	filterSelection("all")
@@ -297,73 +344,30 @@
 	}
 </script>
 
-<!--JS for modal profil description-->
 <script>
-	// Get the modal
-	var modal = document.getElementById("myModal");
-	
-	// Get the button that opens the modal
-	var btn = document.getElementById("myBtn");
-	
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-	
-	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-		modal.style.display = "none";
-	  }
-	}
-</script>
+// Get the modal
+var modal = document.getElementById("myModal");
 
-<!--Speedometer in profile description-->
-<script>
-    var svg = d3.select("#speedometer")
-            .append("svg:svg")
-            .attr("width", 400)
-            .attr("height", 300);
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-    var gauge = iopctrl.arcslider()
-            .radius(120)
-            .events(false)
-            .indicator(iopctrl.defaultGaugeIndicator);
-    gauge.axis().orient("in")
-            .normalize(true)
-            .ticks(12)
-            .tickSubdivide(3)
-            .tickSize(10, 8, 10)
-            .tickPadding(5)
-            .scale(d3.scale.linear()
-                    .domain([0, 160])
-                    .range([-3*Math.PI/4, 3*Math.PI/4]));
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
-    var segDisplay = iopctrl.segdisplay()
-            .width(80)
-            .digitCount(6)
-            .negative(false)
-            .decimals(0);
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-    svg.append("g")
-            .attr("class", "segdisplay")
-            .attr("transform", "translate(130, 200)")
-            .call(segDisplay);
-
-    svg.append("g")
-            .attr("class", "gauge")
-            .call(gauge);
-
-    segDisplay.value(56749);
-    gauge.value(92);
-
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
